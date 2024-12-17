@@ -8,6 +8,7 @@ const amount = document.getElementById("amount")
 const currency = document.getElementById("currency")
 const footer = document.querySelector("footer")
 const description = document.getElementById("description")
+const total = document.getElementById("result")
 
 /* Manipulando o input amount para receber apenas números */
 amount.addEventListener("input", function () {
@@ -44,6 +45,15 @@ function convertCurrency(amount, price, symbol) {
     currency.value == "USD" || currency.value == "GBP"
       ? (description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`)
       : (description.textContent = `1${symbol} = ${formatCurrencyBRL(price)}`)
+
+    /* Calcula o total*/
+    let total = amount * price
+
+    /* Formata o valor total para real brasileiro */
+    total = formatCurrencyBRL(total)
+
+    /* Exibe o resultado total */
+    result.textContent = total
 
     /* Aplica a classe que exibe o footer para mostrar o resultado */
     footer.classList.add("show-result")
